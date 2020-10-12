@@ -534,7 +534,7 @@ AddEventHandler('esx_nafing_firejob:CutChainsaw', function()
     
         if DoesEntityExist(vehicle) and IsPedOnFoot(playerPed) and closestDoor ~= nil then
 			FreezeEntityPosition(playerPed, true)
-			CutDoorsAnim(true)
+			TaskPlayAnim(PlayerPedId(), 'weapons@heavy@minigun', 'fire_med', 4.0, 1.0, -1, 49, 0, 0, 0, 0)
             Citizen.CreateThread(function()
                 ThreadID2 = GetIdOfThisThread()
                 CurrentAction = 'useSaw'
@@ -542,7 +542,7 @@ AddEventHandler('esx_nafing_firejob:CutChainsaw', function()
                 
                 if CurrentAction ~= nil then
 					SetVehicleDoorBroken(vehicle, closestDoor.doorIndex, false)
-					CutDoorsAnim(false)
+					TaskPlayAnim(PlayerPedId(), 'weapons@heavy@minigun', 'idle', 4.0, 1.0, -1, 49, 0, 0, 0, 0)
 					FreezeEntityPosition(playerPed, false)
                     CurrentAction = nil
                     TerminateThisThread()
